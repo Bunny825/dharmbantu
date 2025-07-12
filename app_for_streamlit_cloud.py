@@ -100,7 +100,7 @@ if api_key:
             session_id=session_id,
             token=st.secrets["ASTRA_DB_APPLICATION_TOKEN"],
             api_endpoint=st.secrets["ASTRA_DB_ENDPOINT"],
-            table_name="dharmbantu_messages"
+            collection_name="dharmbantu_messages"
         )
 
     final_chain=RunnableWithMessageHistory(
