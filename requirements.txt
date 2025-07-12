@@ -17,4 +17,5 @@ requests
 unstructured
 unstructured[pdf]
 pypdf
+astrapy
 streamlit
