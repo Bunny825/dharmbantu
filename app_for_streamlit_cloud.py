@@ -99,7 +99,7 @@ if api_key:
         return AstraDBChatMessageHistory(
             session_id=session_id,
             token=st.secrets["ASTRA_DB_APPLICATION_TOKEN"],
-            database_id=st.secrets["ASTRA_DB_ID"],
+            astra_db_id=st.secrets["ASTRA_DB_ID"],
             table_name="dharmbantu_messages"
         )
 
