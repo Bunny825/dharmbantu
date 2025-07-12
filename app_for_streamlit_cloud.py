@@ -98,8 +98,8 @@ if api_key:
     def get_history(session_id: str) -> BaseChatMessageHistory:
         return AstraDBChatMessageHistory(
             session_id=session_id,
-            token=os.environ["ASTRA_DB_APPLICATION_TOKEN"],
-            database_id=os.environ["ASTRA_DB_ID"]
+            token=st.secrets["ASTRA_DB_APPLICATION_TOKEN"],
+            database_id=os.secrets["ASTRA_DB_FOR_MESSAGE_HISTORY_ID"]
         )
 
     final_chain=RunnableWithMessageHistory(
