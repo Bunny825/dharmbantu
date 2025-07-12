@@ -92,7 +92,8 @@ if api_key:
     stuff_chain=create_stuff_documents_chain(llm,qa_prompt)
     ret_chain=create_retrieval_chain(history_ret,stuff_chain)
 
-    st.session_state.store={}
+    if "store" not in st.session_state:
+        st.session_state.store={}
 
     def get_history(session_id:str)->BaseChatMessageHistory:
         if session_id not in st.session_state.store:
