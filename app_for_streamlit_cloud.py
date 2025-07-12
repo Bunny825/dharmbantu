@@ -2,7 +2,7 @@ import streamlit as st
 import time
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
-from langchain_community.chat_message_histories import ChatMessageHistory
+from langchain_community.chat_message_histories import AstraDBChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables.history import RunnableWithMessageHistory
@@ -18,9 +18,6 @@ load_dotenv()
 
 st.title("Dharmbantu")
 st.markdown("Your pocket Indian law assistant.")
-
-if "store" not in st.session_state:
-    st.session_state.store = {}
 
 
 if "env_vars_set" not in st.session_state:
@@ -97,11 +94,13 @@ if api_key:
     ret_chain=create_retrieval_chain(history_ret,stuff_chain)
 
 
-    def get_history(session_id:str)->BaseChatMessageHistory:
-        if session_id not in st.session_state.store:
-            st.session_state.store[session_id]=ChatMessageHistory()
-        return st.session_state.store[session_id]
 
+    def get_history(session_id: str) -> BaseChatMessageHistory:
+        return AstraDBChatMessageHistory(
+            session_id=session_id,
+            token=os.environ["ASTRA_DB_APPLICATION_TOKEN"],
+            database_id=os.environ["ASTRA_DB_ID"]
+        )
 
     final_chain=RunnableWithMessageHistory(
         ret_chain,
