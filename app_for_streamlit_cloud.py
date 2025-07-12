@@ -35,7 +35,7 @@ if "cassio_initialized" not in st.session_state:
 
 
 api_key=st.sidebar.text_input("Enter your OpenAI API key:", type="password")
-session_id=st.sidebar.text_input("Session ID", value="default_session")
+session_id=st.sidebar.text_input("User ID", value="default_session")
 
 if api_key:
     llm=ChatOpenAI(api_key=api_key)
@@ -108,8 +108,8 @@ if api_key:
         history_messages_key="chat_history"
     )
     
-    st.text_input("What is the case:",key="user_input")
-    user_input=st.session_state.user_input
+    
+    user_input=st.text_input("What is the case:")
     if user_input:
         session_history=get_history(session_id)
         start=time.process_time()
@@ -120,7 +120,6 @@ if api_key:
         stop=time.process_time()
         st.write(f"⏱️ Time taken:{stop-start:.2f} seconds")
         st.write("Dharmbantu:",response['answer'])
-        st.session_state.user_input=""
         with st.expander("Chat History"):
             st.write("Chat History:",session_history.messages)
 else:
