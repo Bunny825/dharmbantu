@@ -19,6 +19,10 @@ load_dotenv()
 st.title("Dharmbantu")
 st.markdown("Your pocket Indian law assistant.")
 
+if "store" not in st.session_state:
+    st.session_state.store = {}
+
+
 if "env_vars_set" not in st.session_state:
     os.environ["ASTRA_DB_APPLICATION_TOKEN"]=st.secrets["ASTRA_DB_APPLICATION_TOKEN"]
     os.environ["ASTRA_DB_ID"]=st.secrets["ASTRA_DB_ID"]
@@ -92,8 +96,6 @@ if api_key:
     stuff_chain=create_stuff_documents_chain(llm,qa_prompt)
     ret_chain=create_retrieval_chain(history_ret,stuff_chain)
 
-    if "store" not in st.session_state:
-        st.session_state.store={}
 
     def get_history(session_id:str)->BaseChatMessageHistory:
         if session_id not in st.session_state.store:
