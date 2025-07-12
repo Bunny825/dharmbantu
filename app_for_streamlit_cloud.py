@@ -1,5 +1,6 @@
 import streamlit as st
 import time
+from astrapy.db import AstraDB
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_community.chat_message_histories import AstraDBChatMessageHistory
