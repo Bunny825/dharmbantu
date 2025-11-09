@@ -12,7 +12,6 @@ from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 import cassio
 from langchain_community.vectorstores import Cassandra
-from langchain.indexes.vectorstore import VectorStoreIndexWrapper
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -51,7 +50,6 @@ if api_key:
     keyspace=None
     )
 
-    st.session_state.astra_vector_index=VectorStoreIndexWrapper(vectorstore=st.session_state.astra_vector_store)
     retriever=st.session_state.astra_vector_store.as_retriever(search_type="mmr",search_kwargs={"k": 5,"fetch_k":30,"lambda_mult":0.5})
 
     system=(
