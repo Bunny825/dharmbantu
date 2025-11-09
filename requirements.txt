@@ -1,17 +1,17 @@
-# Core LangChain
-langchain
-langchain-core
-langchain-community
-langchain-openai
-langchain-groq
-langgraph
-langsmith
-langchainhub
+# --- PINNED LANGCHAIN VERSIONS TO FIX BUILD ---
+langchain==1.0.1
+langchain-core==1.0.2
+langchain-community==0.4.1
+langchain-openai==1.0.2
+langchain-groq==1.0.0
+langgraph==1.0.2
+langchainhub==0.1.21
+langsmith==0.4.41
+langchain-text-splitters==1.0.0
+# ---------------------------------------------
 
-# App Framework
+# ... (keep all your other packages like streamlit, pypdf, etc.)
 streamlit
-
-# Dependencies
 python-dotenv
 ipykernel
 arxiv
