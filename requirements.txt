@@ -1,21 +1,26 @@
+# Core LangChain
 langchain
-langchain_community
-langchain_openai
-langchain_groq
-python-dotenv
+langchain-core
+langchain-community
+langchain-openai
+langchain-groq
 langgraph
 langsmith
-langchain_core
+langchainhub
+
+# App Framework
+streamlit
+
+# Dependencies
+python-dotenv
 ipykernel
 arxiv
 wikipedia
 cassio
 tiktoken
-langchainhub
 bs4
 requests
 unstructured
 unstructured[pdf]
 pypdf
 astrapy==0.7.1
-streamlit
