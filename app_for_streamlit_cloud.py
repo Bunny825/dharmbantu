@@ -1,19 +1,18 @@
 import streamlit as st
 import time
 
-from langchain_core.runnables import RunnablePassthrough
-from langchain.chains import create_history_aware_retriever, create_retrieval_chain  
-from langchain.chains import create_stuff_documents_chain
-from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain_classic.chains import create_history_aware_retriever
+from langchain_classic.chains import create_retrieval_chain  
+from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_community.chat_message_histories import AstraDBChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables.history import RunnableWithMessageHistory
-from langchain_openai import OpenAIEmbeddings,ChatOpenAI
+from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 import cassio
-from langchain.vectorstores.cassandra import Cassandra
-from langchain.indexes.vectorstore import VectorStoreIndexWrapper
+from langchain_community.vectorstores import Cassandra
+from langchain_community.vectorstores import VectorStoreIndexWrapper
 import os
 from dotenv import load_dotenv
 load_dotenv()
