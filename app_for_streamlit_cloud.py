@@ -12,7 +12,7 @@ from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 import cassio
 from langchain_community.vectorstores import Cassandra
-from langchain_community.vectorstores import VectorStoreIndexWrapper
+from langchain.indexes.vectorstore import VectorStoreIndexWrapper
 import os
 from dotenv import load_dotenv
 load_dotenv()
