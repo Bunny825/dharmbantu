@@ -1,9 +1,9 @@
 import streamlit as st
 import time
 
-from langchain.chains.history_aware_retriever import create_history_aware_retriever
-from langchain.chains.retrieval import create_retrieval_chain
-
+from langchain_core.runnables import RunnablePassthrough
+from langchain.chains import create_history_aware_retriever, create_retrieval_chain  
+from langchain.chains import create_stuff_documents_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_community.chat_message_histories import AstraDBChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
